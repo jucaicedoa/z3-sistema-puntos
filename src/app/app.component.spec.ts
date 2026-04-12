@@ -14,16 +14,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'z3-sistema-puntos' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('z3-sistema-puntos');
-  });
-
-  it('should render title', () => {
+  it('should render hero title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, z3-sistema-puntos');
+    expect(compiled.querySelector('.hero-title')?.textContent).toContain('ZONA 3');
   });
 });
