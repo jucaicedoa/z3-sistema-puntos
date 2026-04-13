@@ -23,7 +23,7 @@ export class PreciosComponent {
     { item: 'COMBO EMPANADAS (3 EMPANADAS + GASEOSA)', price: '$9.500' },
     { item: 'CHORIZO (PAPA, LIMÓN, CHORIZO, TOPPING)', price: '$9.000' },
     { item: 'CHORIZO COMBO (2 CHORIZOS + 2 ACOMPAÑAMIENTOS: PAPA/AREPA/ENSALADA, 2 VASOS DE GASEOSA)', price: '$16.000' },
-    { item: 'CHUZO POLLO', price: '$13.000' },
+    { item: 'CHUZO POLLO (PAPA,LIMÓN, CHUZO POLLO, TOPPING)', price: '$13.000' },
     { item: 'CHUZO POLLO COMBO (2 CHUZOS POLLO + 2 ACOMPAÑAMIENTOS: PAPA/AREPA/ENSALADA,  2 VASOS DE GASEOSA)', price: '$22.000' },
   ];
 }
