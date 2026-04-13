@@ -711,6 +711,44 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.precios-legal--dropdown {
+  padding: 0;
+}
+
+.precios-legal-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.25rem 1.35rem;
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.precios-legal-body {
+  padding: 0 1.35rem 1.25rem;
+}
+
+.precios-legal-chevron {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 2px solid rgba(245, 230, 200, 0.9);
+  border-bottom: 2px solid rgba(245, 230, 200, 0.9);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  flex: 0 0 auto;
+  opacity: 0.85;
+}
+
+details.precios-legal[open] .precios-legal-chevron {
+  transform: rotate(-135deg);
+}
+
 .precios-legal-title {
   margin: 0 0 0.75rem;
   font-family: var(--z3-display);
@@ -719,6 +757,10 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #f5e6c8;
+}
+
+.precios-legal-summary .precios-legal-title {
+  margin: 0;
 }
 
 .precios-legal-list {
@@ -914,6 +956,14 @@
     margin-top: 1.5rem;
     padding: 1rem 0.85rem;
     border-radius: 1rem;
+  }
+
+  .precios-legal-summary {
+    padding: 1rem 0.85rem;
+  }
+
+  .precios-legal-body {
+    padding: 0 0.85rem 1rem;
   }
 
   .precios-legal-title {
