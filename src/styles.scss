@@ -36,4 +36,39 @@ app-root {
   min-height: 100vh;
 }
 
+/* Etiquetas turno: texto largo en pantallas anchas, Turno M / N en móvil */
+.turno-pill .turno-pill-label-full {
+  display: inline;
+}
+
+.turno-pill .turno-pill-label-abbr {
+  display: none;
+}
+
+@media (max-width: 559px) {
+  .turno-pill .turno-pill-label-full {
+    display: none;
+  }
+
+  .turno-pill .turno-pill-label-abbr {
+    display: inline;
+  }
+}
+
+.turno-tabla-leyenda {
+  margin: 0.65rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--z3-muted);
+  text-align: left;
+  max-width: 40rem;
+}
+
+@media (max-width: 559px) {
+  .turno-tabla-leyenda {
+    font-size: 0.74rem;
+    padding: 0 0.15rem;
+  }
+}
+
 @import './app/app.component.scss';

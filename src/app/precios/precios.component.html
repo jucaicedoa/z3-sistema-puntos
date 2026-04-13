@@ -23,19 +23,36 @@
             <thead>
               <tr>
                 <th scope="col">Ítem</th>
+                <th scope="col">Turno</th>
                 <th scope="col">Precio</th>
               </tr>
             </thead>
             <tbody>
               @for (row of combos; track row.item) {
                 <tr>
-                  <td>{{ row.item }}</td>
-                  <td class="precios-table-price"><span class="precios-price-pill">{{ row.price }}</span></td>
+                  <td data-label="Ítem">{{ row.item }}</td>
+                  <td class="precios-table-turno" data-label="Turno">
+                    <span
+                      class="precios-turno-pill turno-pill"
+                      [class.precios-turno-pill--mañana]="row.turno === 'mañana'"
+                      [class.precios-turno-pill--noche]="row.turno === 'noche'"
+                      [attr.title]="etiquetaTurnoCombo[row.turno]"
+                    >
+                      <span class="turno-pill-label-full">{{ etiquetaTurnoCombo[row.turno] }}</span>
+                      <span class="turno-pill-label-abbr">{{ etiquetaTurnoComboCorta[row.turno] }}</span>
+                    </span>
+                  </td>
+                  <td class="precios-table-price" data-label="Precio">
+                    <span class="precios-price-pill">{{ row.price }}</span>
+                  </td>
                 </tr>
               }
             </tbody>
           </table>
         </div>
+        <p class="turno-tabla-leyenda" role="note">
+          <strong>M</strong> = turno mañana · <strong>N</strong> = turno noche.
+        </p>
       </div>
     </section>
 
@@ -86,9 +103,12 @@
       <div class="precios-legal" role="note">
         <h3 class="precios-legal-title">Términos y condiciones</h3>
         <ul class="precios-legal-list">
-          <li>Se entrega a domicilio todos los días en un mismo sitio. (Frente a la facultad de Minas - Robledo)</li>
+          <li>Se entrega a domicilio todos los días en un mismo sitio y a un mismo horario para todos los usuarios. (Frente a la facultad de Minas - Robledo)</li>
           <li>
-            Los días <strong>lunes no se realizan entregas</strong>; ese día <strong>no se incluye</strong> en la membresía.
+            Los días <strong>Lunes</strong> no se realizan entregas; ese día <strong>no se incluye</strong> en la membresía.
+            Si <strong>no se trabaja el Martes</strong>, la entrega correspondiente se hace el <strong>Lunes</strong>. El equipo
+            Z3 <strong>descansa los Martes</strong> cuando el <strong>Lunes</strong> se trabaja por ser
+            <strong>festivo</strong>.
           </li>
           <li>Las membresías incluyen <strong>desayuno y almuerzo</strong>.</li>
           <li>

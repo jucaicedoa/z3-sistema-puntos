@@ -18,8 +18,8 @@
     </h1>
     <p class="hero-lead">Combos y Antojos hechos con cariño, todo para llevar y un programa de puntos Z3.</p>
     <div class="hero-actions">
-      <button type="button" class="btn btn-primary" (click)="scrollTo('puntos-z3')">Conoce Puntos Z3</button>
-      <button type="button" class="btn btn-ghost" (click)="scrollTo('sobre-nosotros')">Sobre ZONA 3</button>
+      <button type="button" class="btn btn-primary" (click)="scrollTo('puntos-z3')">Puntos Z3</button>
+      <button type="button" class="btn btn-ghost" (click)="scrollTo('sobre-nosotros')">ZONA 3</button>
     </div>
   </div>
 </section>
@@ -79,8 +79,9 @@
       <div class="section-head-text">
         <h2 id="puntos-title">Puntos Z3</h2>
         <p class="section-sub">
-          Este formulario te permite registrar puntos en el sistema de clientes Z3, lo que te va a permitir obtener descuentos
-          y premios especiales.
+          Cada combo suma <strong>puntos base</strong> distintos. Si en la semana alcanzas una
+          <strong>frecuencia de compras</strong> y una <strong>meta de puntos base</strong>, esos puntos de la semana se
+          <strong>multiplican</strong>. Completa el formulario después de comprar en el local para registrar tus puntos.
         </p>
       </div>
     </header>
@@ -115,10 +116,98 @@
       </p>
     </div>
 
+    <div class="puntos-combos-block">
+      <h3 class="puntos-combos-heading">Puntos base por combo</h3>
+      <p class="puntos-combos-lead">
+        Son los puntos que suma <strong>cada compra</strong> antes del multiplicador semanal. Los combos más completos suman más;
+        así no es lo mismo llegar a la meta con pedidos chicos que eligiendo combos que más puntos aportan.
+      </p>
+      <div class="puntos-combos-table-wrap">
+        <table class="puntos-combos-table">
+          <thead>
+            <tr>
+              <th scope="col">Combo</th>
+              <th scope="col">Turno</th>
+              <th scope="col">Puntos base</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of combosPuntos; track row.item) {
+              <tr>
+                <td data-label="Combo">{{ nombreComboSinDetalle(row.item) }}</td>
+                <td class="puntos-combos-table-turno" data-label="Turno">
+                  <span
+                    class="puntos-combos-turno-pill turno-pill"
+                    [class.puntos-combos-turno-pill--mañana]="row.turno === 'mañana'"
+                    [class.puntos-combos-turno-pill--noche]="row.turno === 'noche'"
+                    [attr.title]="etiquetaTurnoCombo[row.turno]"
+                  >
+                    <span class="turno-pill-label-full">{{ etiquetaTurnoCombo[row.turno] }}</span>
+                    <span class="turno-pill-label-abbr">{{ etiquetaTurnoComboCorta[row.turno] }}</span>
+                  </span>
+                </td>
+                <td class="puntos-combos-table-pts" data-label="Puntos base">
+                  <span class="puntos-combos-pts-pill">+{{ formatoPuntosBase(row.puntos) }}</span>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="turno-tabla-leyenda" role="note">
+        <strong>M</strong> = turno mañana · <strong>N</strong> = turno noche.
+      </p>
+    </div>
+
+    <div class="puntos-niveles-block">
+      <h3 class="puntos-niveles-heading">Niveles semanales</h3>
+      <p class="puntos-niveles-lead">
+        Cada nivel se define por <strong>cuántas compras</strong> haces en la semana y por la
+        <strong>suma de puntos base</strong> de esa misma semana (según la tabla de arriba).
+      </p>
+      <ul class="puntos-niveles-list">
+        @for (n of nivelesZ3; track n.nivel) {
+          <li class="puntos-nivel-card puntos-nivel-card--{{ n.nivel }}">
+            <span class="puntos-nivel-badge">Nivel {{ n.nivel }}</span>
+            <span class="puntos-nivel-name">{{ n.nombre }}</span>
+            <p class="puntos-nivel-requisito">
+              {{ n.comprasSemanales }} compras y {{ formatoPuntosBase(n.puntosMetaSemanal) }}+ puntos base ·
+              {{ formatoMultiplicador(n.multiplicador) }}
+            </p>
+          </li>
+        }
+      </ul>
+
+      <details class="puntos-beneficios-details">
+        <summary class="puntos-beneficios-summary">Beneficios por nivel la semana siguiente</summary>
+        <div class="puntos-beneficios-panel">
+          <p class="puntos-beneficios-sorteo-regla">
+            Al sorteo de cada nivel entran <strong>solo quienes estén entre los 10 primeros</strong> de ese nivel en la
+            clasificación de la semana (Bronce, Plata y Oro van por separado).
+          </p>
+          <ul class="puntos-beneficios-list">
+            @for (b of beneficiosSemanaSiguiente; track b.id) {
+              <li class="puntos-beneficio-row puntos-beneficio-row--{{ b.id }}">
+                <span class="puntos-beneficio-titulo">{{ b.titulo }}</span>
+                <p class="puntos-beneficio-detalle">{{ b.detalle }}</p>
+              </li>
+            }
+          </ul>
+          <p class="puntos-beneficios-aviso" role="note">
+            Estos premios y descuentos aplican <strong>solo durante una semana</strong>, contada
+            <strong>después</strong> de haberse <strong>informado a los ganadores</strong>.
+          </p>
+        </div>
+      </details>
+    </div>
+
     <ul class="puntos-rules" aria-label="Reglas del programa Puntos Z3">
       <li class="puntos-rule">
-        <h3 class="puntos-rule-title">Regla de oro</h3>
-        <p>1 compra = 1 Punto Z3.</p>
+        <h3 class="puntos-rule-title">Base y multiplicador</h3>
+        <p>
+          Los puntos de la tabla son la base por combo. El multiplicador semanal solo aplica si cumples la cantidad de compras y
+          la meta de puntos base de esa semana.
+        </p>
       </li>
       <li class="puntos-rule">
         <h3 class="puntos-rule-title">Corte semanal</h3>
