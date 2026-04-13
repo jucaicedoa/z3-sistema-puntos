@@ -185,6 +185,11 @@
             Al sorteo de cada nivel entran <strong>solo quienes estén entre los 10 primeros</strong> de ese nivel en la
             clasificación de la semana (Bronce, Plata y Oro van por separado).
           </p>
+          <p class="puntos-beneficios-desempate" role="note">
+            <strong>Criterio de desempate:</strong> si hay empate en la tabla del nivel, se define el orden por quien
+            <strong>alcance primero la meta</strong> de ese nivel en la semana (las compras y los puntos base exigidos para
+            ese nivel).
+          </p>
           <ul class="puntos-beneficios-list">
             @for (b of beneficiosSemanaSiguiente; track b.id) {
               <li class="puntos-beneficio-row puntos-beneficio-row--{{ b.id }}">
