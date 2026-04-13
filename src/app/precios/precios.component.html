@@ -1,0 +1,102 @@
+<div class="precios-page">
+  <div class="precios-bg" aria-hidden="true"></div>
+
+  <div class="precios-page-inner">
+    <header class="precios-hero">
+      <p class="precios-eyebrow">ZONA 3</p>
+      <h1 class="precios-title">
+        Precios <span class="text-gradient">y membresías</span>
+      </h1>
+      <p class="precios-lead">Combos para llevar y planes Comidas Z3, con la misma onda que en el local.</p>
+    </header>
+
+    <section class="precios-section precios-section--combos" aria-labelledby="precios-combos-title">
+      <header class="precios-section-head">
+        <span class="precios-kicker">Menú</span>
+        <h2 id="precios-combos-title" class="precios-h2">Precios combos</h2>
+        <p class="precios-section-desc">Todo listo para pedir y seguir tu camino.</p>
+      </header>
+
+      <div class="precios-panel">
+        <div class="precios-table-wrap">
+          <table class="precios-table">
+            <thead>
+              <tr>
+                <th scope="col">Ítem</th>
+                <th scope="col">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of combos; track row.item) {
+                <tr>
+                  <td>{{ row.item }}</td>
+                  <td class="precios-table-price"><span class="precios-price-pill">{{ row.price }}</span></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="precios-section precios-section--membresias" aria-labelledby="membresias-title">
+      <header class="precios-section-head precios-section-head--center">
+        <span class="precios-kicker">Planes</span>
+        <h2 id="membresias-title" class="precios-h2">Membresías Comidas Z3</h2>
+        <p class="precios-section-desc">Desayuno y almuerzo incluidos · entrega en un mismo sitio</p>
+      </header>
+
+      <div class="membresias-grid">
+        <article class="membresia-card membresia-card--bronce">
+          <span class="membresia-index" aria-hidden="true">01</span>
+          <div class="membresia-card-head">
+            <h3 class="membresia-name">Bronce</h3>
+            <p class="membresia-duration">1 semana</p>
+          </div>
+          <p class="membresia-meals">6 días × 2 comidas · <strong>6 comidas</strong></p>
+          <p class="membresia-price"><span class="membresia-price-value">$110.000</span></p>
+        </article>
+
+        <article class="membresia-card membresia-card--plata">
+          <span class="membresia-index" aria-hidden="true">02</span>
+          <div class="membresia-card-head">
+            <h3 class="membresia-name">Plata</h3>
+            <p class="membresia-duration">2 semanas</p>
+          </div>
+          <p class="membresia-meals">13 días × 2 comidas · <strong>13 comidas</strong></p>
+          <p class="membresia-price"><span class="membresia-price-value">$220.000</span></p>
+        </article>
+
+        <article class="membresia-card membresia-card--oro membresia-card--destacada">
+          <span class="membresia-index" aria-hidden="true">03</span>
+          <div class="membresia-card-head">
+            <span class="membresia-badge">Más completo</span>
+            <h3 class="membresia-name">Oro</h3>
+            <p class="membresia-duration">4 semanas</p>
+          </div>
+          <p class="membresia-meals">26 días × 2 comidas · <strong>26 comidas</strong></p>
+          <p class="membresia-price"><span class="membresia-price-value">$390.000</span></p>
+          <p class="membresia-extra">
+            <strong>10% off</strong> en combos del horario nocturno con la membresía activa. Esos combos
+            <strong>no suman Puntos Z3</strong>.
+          </p>
+        </article>
+      </div>
+
+      <div class="precios-legal" role="note">
+        <h3 class="precios-legal-title">Términos y condiciones</h3>
+        <ul class="precios-legal-list">
+          <li>Se entrega a domicilio todos los días en un mismo sitio.</li>
+          <li>
+            Los días <strong>lunes no se realizan entregas</strong>; ese día <strong>no se incluye</strong> en la membresía.
+          </li>
+          <li>Las membresías incluyen <strong>desayuno y almuerzo</strong>.</li>
+          <li>
+            En caso de <strong>cancelación</strong>, se devuelve el valor proporcional a los <strong>días faltantes</strong> y
+            se reduce la <strong>tarifa de servicio</strong>.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>

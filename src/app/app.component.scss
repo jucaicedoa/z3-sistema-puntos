@@ -1,22 +1,3 @@
-:host {
-  --z3-bg: #0a0b0f;
-  --z3-surface: rgba(255, 255, 255, 0.06);
-  --z3-surface-strong: rgba(255, 255, 255, 0.1);
-  --z3-border: rgba(255, 255, 255, 0.12);
-  --z3-text: rgba(255, 255, 255, 0.92);
-  --z3-muted: rgba(255, 255, 255, 0.62);
-  --z3-accent: #f4a742;
-  --z3-accent-soft: rgba(244, 167, 66, 0.22);
-  --z3-accent-2: #ff6b4a;
-  --z3-font: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --z3-display: 'Outfit', var(--z3-font);
-  display: block;
-  min-height: 100vh;
-  font-family: var(--z3-font);
-  color: var(--z3-text);
-  background: var(--z3-bg);
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1113,4 +1094,16 @@
     margin-top: 0.15rem;
     padding-top: 0.45rem;
   }
+}
+
+.landing.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-main {
+  flex: 1 0 auto;
+  width: 100%;
+  min-width: 0;
 }

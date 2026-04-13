@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { routes } from './app.routes';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, RouterTestingModule.withRoutes(routes)],
     }).compileComponents();
   });
 
@@ -14,10 +17,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render hero title', () => {
+  it('should render header and router outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.hero-title')?.textContent).toContain('ZONA 3');
+    expect(compiled.querySelector('.site-header')).toBeTruthy();
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });
